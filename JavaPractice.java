@@ -34,4 +34,14 @@ public class JavaPractice {
     public static int solution3(int  slice, int n){
      return n%slice>0 ? n/slice+1 : n/slice;
     }
+
+    // 정수 배열 numbers가 매개변수로 주어집니다. numbers의 원소의 평균값을 return하도록 solution 함수를 완성해주세요.
+
+    public static double solution4(int[] numbers){
+        int sum=0;
+        for (int number : numbers) {
+            sum+=number;
+        }
+        return (double) sum /numbers.length;
+    }
 }
