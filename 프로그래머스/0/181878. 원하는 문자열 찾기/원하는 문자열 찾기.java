@@ -1,16 +1,9 @@
 class Solution {
     public int solution(String myString, String pat) {
-        myString = myString.toLowerCase();
-        pat = pat.toLowerCase();
-
-        int n = myString.length();
-        int m = pat.length();
+        int answer = 0;
+        String str = myString.toLowerCase();
+        String str2 = pat.toLowerCase();
         
-        for (int i = 0; i <= n - m; i++) {
-            if (myString.substring(i, i + m).equals(pat)) {
-                return 1; 
-            }
-        }
-        return 0; 
+        return str.contains(str2) ? 1 : 0 ;
     }
 }
