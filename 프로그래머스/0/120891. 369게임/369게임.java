@@ -1,14 +1,14 @@
 class Solution {
     public int solution(int order) {
         int answer = 0;
-        String orderStr = String.valueOf(order); // 정수를 문자열로 변환
-        
-        for (char digit : orderStr.toCharArray()) { // 각 자리수 확인
-            if (digit == '3' || digit == '6' || digit == '9') {
-                answer++;
-            }
+
+        String str = order+"";
+
+        for(int i=0; i<str.length(); i++){
+            char c = str.charAt(i);
+            if(c=='3'||c=='6'||c=='9') answer++;
         }
-        
+
         return answer;
     }
 }
