@@ -1,16 +1,19 @@
 class Solution {
     public String solution(String my_string) {
         String answer = "";
-        StringBuilder sb = new StringBuilder();
-        char[] chStr =my_string.toCharArray();
         
-        for(char ch : chStr){
-            if(65<=ch && ch<=90){
-                sb.append(Character.toLowerCase(ch));
-            }else 
-                sb.append(Character.toUpperCase(ch));
+        for(int i=0; i<my_string.length(); i++){
+            char ch = my_string.charAt(i);
+            
+            if('A' <= ch && ch <= 'Z') ch+=32;
+            else if ('a' <= ch && ch <= 'z') ch-=32;
+            
+            answer +=ch;
+            
             
         }
-        return sb.toString();
+        
+        
+        return answer;
     }
 }
