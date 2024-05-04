@@ -1,15 +1,9 @@
+
 class Solution {
     public int solution(int[] dot) {
-        int answer = 0;
-        if(dot[0]>0 && dot[1]>0) {         
-            answer=1;
-        }else if(dot[0]<0 && dot[1]>0) {        
-            answer=2;
-        }else if(dot[0]<0 && dot[1]<0) {     
-            answer=3;
-        }else if(dot[0]>0 && dot[1]<0) {    
-            answer=4;
-        }
-        return answer;
+        int xParam = dot[0] < 0 ? 1 : 0;
+        int yParam = dot[1] < 0 ? 2 : 0;
+
+        return 1 + ((xParam | yParam) ^ (yParam >> 1));
     }
 }
