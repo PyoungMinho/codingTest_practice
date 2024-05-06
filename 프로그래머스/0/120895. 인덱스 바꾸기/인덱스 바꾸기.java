@@ -1,10 +1,11 @@
 class Solution {
     public String solution(String my_string, int num1, int num2) {
-        char[] chArr = my_string.toCharArray();
-        char temp = chArr[num1];
-        chArr[num1] = chArr[num2];
-        chArr[num2] = temp;
+        char temp = my_string.charAt(num1);
+        StringBuilder sb = new StringBuilder(my_string);
         
-        return new String(chArr);
+        sb.setCharAt(num1, my_string.charAt(num2));
+        sb.setCharAt(num2, temp);
+        
+        return sb.toString();
     }
 }
