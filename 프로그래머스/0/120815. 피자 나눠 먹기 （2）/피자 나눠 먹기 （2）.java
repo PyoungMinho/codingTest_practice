@@ -1,7 +1,12 @@
 class Solution {
     public int solution(int n) {
-        if (n%2==0) n/=2;
-        if (n%3==0) n/=3;
-        return n;
+        int answer = 1;
+
+        while(true){
+            if(6*answer%n==0) break;
+            answer++;
+        }
+
+        return answer;
     }
 }
