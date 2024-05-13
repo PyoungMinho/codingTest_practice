@@ -1,14 +1,10 @@
 class Solution {
     public int solution(int n) {
-        int i = 1;
-        int fac = 1;
-        
-        while(fac <= n){
-            fac += fac * i ;
-            i++;
-            
+        int answer = 1; 
+        int factorial = 1;
+        while(n>=factorial) {
+            factorial *= ++answer;
         }
-        
-        return i-1;
+        return answer-1;
     }
 }
