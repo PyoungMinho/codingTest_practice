@@ -1,9 +1,19 @@
 class Solution {
     public int solution(int num, int k) {
-        String numStr = String.valueOf(num);
-        String kStr = String.valueOf(k);
-
-        int answer = numStr.indexOf(kStr);
-        return answer < 0 ? -1 : answer + 1 ;
+        int answer = 0;
+        
+        String str = num+"";
+        String[] strArr = str.split("");
+        
+        for(int i=0; i<strArr.length; i++){
+            if(strArr[i].equals(k+"")){
+                answer = i+1;
+                    break;
+            }
+            else answer = -1;
+        }
+        
+        
+        return answer;
     }
 }
