@@ -1,14 +1,16 @@
-import java.util.List;
-import java.util.ArrayList;
-
 class Solution {
     public int[] solution(int n) {
-        List<Integer> answer = new ArrayList<>();
-        for(int i=1; i<=n; i++){
-            if(i % 2 == 1){
-                answer.add(i);
+        int size = (n + 1) / 2; 
+        int[] answer = new int[size];
+        int idx = 0;
+        
+        for(int i = 1; i <= n; i++) {
+            if(i % 2 != 0) {
+                answer[idx] = i;
+                idx++;
             }
         }
-        return answer.stream().mapToInt(x -> x).toArray();
+        
+        return answer;
     }
 }
