@@ -1,17 +1,15 @@
 class Solution {
     public int solution(int[] num_list) {
-        int answer = (num_list.length < 11 ? 1 : 0);
-
-        for(int i=0; i<num_list.length; i++){
-
-            if(num_list.length < 11) {
-                answer *= num_list[i];
-            }else{
-                answer += num_list[i];
-            }
-
-        }
-
+        int idx = num_list.length;
+        int answer = (idx >= 11) ? 0 : 1;
+        
+        if(idx >= 11){
+            for(int i : num_list) answer += i;
+            
+        }else 
+            for(int i : num_list) answer *= i; 
+        
+        
         return answer;
     }
 }
