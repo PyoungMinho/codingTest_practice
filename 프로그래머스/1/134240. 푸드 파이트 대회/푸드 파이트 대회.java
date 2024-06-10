@@ -1,13 +1,11 @@
 class Solution {
     public String solution(int[] food) {
-        String answer = "0";
-
-        for (int i = food.length - 1; i > 0; i--) {
-            for (int j = 0; j < food[i] / 2; j++) {
-                answer = i + answer + i; 
-            }
+        StringBuilder builder = new StringBuilder();
+        for (int i=1; i<food.length; i++) {
+            int result = food[i] / 2;
+            builder.append(String.valueOf(i).repeat(result));
         }
-
-        return answer;
+        String answer = builder + "0";
+        return answer + builder.reverse();
     }
 }
