@@ -1,6 +1,16 @@
 class Solution {
-    String solution(int a, int b) {
-        return 
-            new String[] {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"}[(new int[] {0, 4, 0, 1, 4, 6, 2, 4, 0, 3, 5, 1, 3}[a] + b) % 7];
-    }
+  public String solution(int a, int b) {
+      String answer = "";
+
+      int[] c = {31,29,31,30,31,30,31,31,30,31,30,31};
+      String[] MM ={"FRI","SAT","SUN","MON","TUE","WED","THU"};
+      int Adate = 0;
+      for(int i = 0 ; i< a-1; i++){
+          Adate += c[i];
+      }
+      Adate += b-1;
+      answer = MM[Adate %7];
+
+      return answer;
+  }
 }
