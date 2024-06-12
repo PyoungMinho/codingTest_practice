@@ -1,25 +1,16 @@
-import java.util.*;
 class Solution {
-    public int[] solution(int numer1, int denom1, int numer2, int denom2) {
-        int numer = numer1 * denom2 + numer2 * denom1;
-        int denom = denom1 * denom2;
-
-        // 최대공약수 구하기
-        int gcd = gcd(numer, denom);
-
-        numer /= gcd;
-        denom /= gcd;
-
-        return new int[]{numer, denom};
-    }
-
-    // 최대공약수 계산
-    public int gcd(int a, int b) {
-        while (b != 0) {
-            int r = a % b;
-            a = b;
-            b = r;
+    public int[] solution(int denum1, int num1, int denum2, int num2) {
+        int mother = num1 * num2;
+        int son1 = num1 * denum2;
+        int son2 = num2 * denum1;
+        int totalSon = son1 + son2;
+        for(int i = mother; i >= 1; i--){
+            if(totalSon % i == 0 && mother % i == 0){
+                totalSon /= i;
+                mother /= i;
+            }
         }
-        return a;
+        int[] answer = {totalSon, mother};
+        return answer;
     }
 }
