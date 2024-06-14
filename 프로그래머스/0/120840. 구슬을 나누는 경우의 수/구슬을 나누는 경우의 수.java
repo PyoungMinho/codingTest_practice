@@ -1,16 +1,11 @@
 class Solution {
     public long solution(int balls, int share) {
-        share = Math.min(balls - share, share);
+        long answer = 0;
 
-        if (share == 0)
-            return 1;
+        int d = (balls - share) > share ? share : balls - share;
+        if (d == 0) return 1;
 
-        long result = solution(balls - 1, share - 1);
-        result *= balls;
-        result /= share;
-
-        return result;
+        return solution(balls - 1, d - 1) * balls / d;
     }
-
 
 }
