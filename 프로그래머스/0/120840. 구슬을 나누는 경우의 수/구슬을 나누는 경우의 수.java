@@ -1,10 +1,16 @@
 class Solution {
-    public double solution(int balls, int share) { 
-        double answer = 1;
+    public long solution(int balls, int share) {
+        share = Math.min(balls - share, share);
 
-        for(int i = 0; i < share; i++){
-            answer = answer * (balls - i) / (i+1);
-        }        
-        return answer;
+        if (share == 0)
+            return 1;
+
+        long result = solution(balls - 1, share - 1);
+        result *= balls;
+        result /= share;
+
+        return result;
     }
+
+
 }
