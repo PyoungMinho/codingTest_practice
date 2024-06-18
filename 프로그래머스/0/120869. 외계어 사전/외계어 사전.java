@@ -1,16 +1,24 @@
 class Solution {
     public int solution(String[] spell, String[] dic) {
-        boolean wordCheck = false;
-        for (String word : dic) {
-            int count = 0;
-            for (String s : spell) {
-                if (word.contains(s)) count++;
+        int answer = 2;
+
+
+        for(String dicS : dic) {
+
+            boolean isRight = true;
+            for(String spellS : spell) {
+                if(dicS.indexOf(spellS) == -1) {
+                    isRight = false;
+                    break;
+                }
             }
-            if (count == spell.length) {
-                wordCheck = true;
+
+            if(isRight) {
+                answer = 1;
                 break;
             }
         }
-        return wordCheck ? 1 : 2;
+
+        return answer;
     }
 }
