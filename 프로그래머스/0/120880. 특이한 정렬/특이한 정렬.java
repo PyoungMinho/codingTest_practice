@@ -1,19 +1,15 @@
-import java.util.Arrays;
+import java.util.*;
 
 class Solution {
     public int[] solution(int[] numlist, int n) {
-        Arrays.sort(numlist);
-        
-         for(int i=0; i<numlist.length; i++){
-            for(int j=0; j<numlist.length; j++){
-                if(Math.abs(numlist[i]-n) <= Math.abs(numlist[j]-n)){
-                    int temp = numlist[i];
-                    numlist[i] = numlist[j];
-                    numlist[j] = temp;
-                }
-            }
-        }
-
-        return numlist;
+        return Arrays.stream(numlist).mapToObj(a->(Integer)a)
+            .sorted((a, b)->{
+                int u = Math.abs(n - a);
+                int v = Math.abs(n - b);
+                if(u == v) return b - a;
+                else return u - v;
+            })
+            .mapToInt(a->a)
+            .toArray();
     }
 }
