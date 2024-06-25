@@ -1,13 +1,7 @@
+import java.util.stream.*;
+
 class Solution {
-    public String solution(String[] my_strings, int[][] parts) {
-        String answer = "";
-        
-        for(int i=0; i<my_strings.length; i++){
-            String str = my_strings[i];
-            
-            answer += str.substring(parts[i][0], parts[i][1]+1);
-        }
-        
-        return answer;
+    public String solution(String[] myStrings, int[][] parts) {
+        return IntStream.range(0, myStrings.length).mapToObj(i -> myStrings[i].substring(parts[i][0], parts[i][1] + 1)).collect(Collectors.joining());
     }
 }
