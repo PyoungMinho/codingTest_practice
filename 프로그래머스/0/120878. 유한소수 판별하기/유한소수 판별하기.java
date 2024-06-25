@@ -1,21 +1,18 @@
 class Solution {
     public int solution(int a, int b) {
-        int answer = 1;
-        int max = 0;
-        for(int i =1; i<=a; i++){
-            if(a%i ==0 && b%i ==0) max= i;
+        int answer = 0;
+
+        for (;b%2 == 0;) {
+            b = b/2;
+        }
+        for (;b%5 == 0;) {
+            b = b/5;
         }
 
-        b /= max;
-
-        while(b>1){
-            if(b%2==0){
-                b /= 2;
-            }else if(b%5==0){
-                b /= 5;
-            }else {
-                return 2;
-            }
+        if ((a/(double)b)%1 == 0) {
+            answer = 1;
+        } else {
+            answer = 2;
         }
 
         return answer;
