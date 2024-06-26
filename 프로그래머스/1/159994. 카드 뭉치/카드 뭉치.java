@@ -1,14 +1,21 @@
+import java.util.*;
+
 class Solution {
     public String solution(String[] cards1, String[] cards2, String[] goal) {
-        int i = 0; // cards1의 인덱스
-        int j = 0; // cards2의 인덱스
+        List<String> card1Ary = new ArrayList<>(Arrays.asList(cards1));
+        List<String> card2Ary = new ArrayList<>(Arrays.asList(cards2));
 
-        for (int k = 0; k < goal.length; k++) { 
-            if (i < cards1.length && cards1[i].equals(goal[k]))       { i++; } 
-            else if (j < cards2.length && cards2[j].equals(goal[k]))  { j++; } 
-            else  { return "No"; }
+        String answer = "Yes";
+        for(String str:goal) {
+            if(!card1Ary.isEmpty() && card1Ary.get(0).equals(str)) {
+                card1Ary.remove(0);
+            } else if(!card2Ary.isEmpty() && card2Ary.get(0).equals(str)) {
+                card2Ary.remove(0);
+            } else {
+                answer = "No";
+                break;
+            }
         }
-
-        return "Yes"; 
+        return answer;
     }
 }
