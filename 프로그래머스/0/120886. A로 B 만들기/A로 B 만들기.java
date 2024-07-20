@@ -1,12 +1,14 @@
-import java.util.*;
+import java.util.Arrays;
+
 class Solution {
     public int solution(String before, String after) {
-        char[] beArr = before.toCharArray();
-        char[] afArr = after.toCharArray();
+         // 문자열을 문자 배열로 변환
+         char[] beforeArr = before.toCharArray();
+         char[] afterArr = after.toCharArray();
         
-        Arrays.sort(beArr);
-        Arrays.sort(afArr);
+         Arrays.sort(beforeArr);
+         Arrays.sort(afterArr);
         
-        return Arrays.equals(beArr, afArr) ? 1 : 0;
+        return Arrays.equals(beforeArr, afterArr) ? 1 : 0;
     }
 }
