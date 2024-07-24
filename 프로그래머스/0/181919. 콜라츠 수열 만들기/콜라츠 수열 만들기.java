@@ -1,24 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.IntStream;
 
 class Solution {
     public int[] solution(int n) {
-        List<Integer> sequence = new ArrayList<>();
-        sequence.add(n);
-
-        while (n != 1) {
-            if (n % 2 == 0) {
-                n /= 2;
-            } else {
-                n = 3 * n + 1;
-            }
-            sequence.add(n);
-        }
-
-        int[] answer = new int[sequence.size()];
-        for (int i = 0; i < sequence.size(); i++) {
-            answer[i] = sequence.get(i);
-        }
-        return answer;
+        return IntStream.concat(
+                        IntStream.iterate(n, i -> i > 1, i -> i % 2 == 0 ? i / 2 : i * 3 + 1),
+                        IntStream.of(1))
+                .toArray();
     }
 }
