@@ -1,7 +1,7 @@
 class Solution {
     public int[] solution(int[] arr, int n) {
-        for(int idx=arr.length%2==0?1:0; idx<arr.length; idx+=2) {
-            arr[idx]+=n;
+        for (int i = arr.length - 1; i >= 0; i -= 2) {
+            arr[i] += n;
         }
         return arr;
     }
