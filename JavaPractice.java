@@ -79,7 +79,9 @@ public class JavaPractice {
             for(int i=0; i<num_list.length; i++){
                 answer[num_list.length-i-1]=num_list[i];
             }
-
+    // 2차원 연습할것
         return answer;
+
+
     }
 }
