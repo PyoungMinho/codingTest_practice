@@ -1,11 +1,16 @@
-import java.util.*;
-
 class Solution {
     public int solution(int[] numbers) {
-        int answer = 0;
+        int max = numbers[0];
+        int prev = 0;
+        for(int i=1; i<numbers.length; i++){
+            if(max < numbers[i]){
+                prev = max;
+                max = numbers[i];
+            }else if(prev < numbers[i]){
+                prev = numbers[i];
+            }
+        }
 
-        Arrays.sort(numbers);
-
-        return numbers[numbers.length-1]*numbers[numbers.length-2];
+        return prev*max;
     }
 }
