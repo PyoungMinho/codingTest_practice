@@ -1,10 +1,15 @@
-import java.util.stream.IntStream;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class Solution {
     public int[] solution(int n) {
-        return IntStream.concat(
-                        IntStream.iterate(n, i -> i > 1, i -> i % 2 == 0 ? i / 2 : i * 3 + 1),
-                        IntStream.of(1))
-                .toArray();
+        Queue<Integer> answer = new LinkedList<>();
+        while (n > 1) {
+            answer.add(n);
+            if (n % 2 == 0) n >>= 1;
+            else n = n * 3 + 1;
+        }
+        answer.add(1);
+        return answer.stream().mapToInt(i -> i).toArray();
     }
 }
