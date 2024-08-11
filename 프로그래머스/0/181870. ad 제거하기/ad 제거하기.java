@@ -1,9 +1,7 @@
-import java.util.Arrays;
+import java.util.*;
 
 class Solution {
     public String[] solution(String[] strArr) {
-        return Arrays.stream(strArr)
-                     .filter(str -> !str.contains("ad"))
-                     .toArray(String[]::new);
+        return Arrays.stream(strArr).filter(s -> !s.contains("ad")).toArray(String[]::new);
     }
 }
