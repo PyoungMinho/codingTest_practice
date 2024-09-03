@@ -1,13 +1,12 @@
 class Solution {
     public int solution(int n) {
-        int answer = 0;
- 
-        for (int i = 0; i < n; i++) {     
-            answer++;                       
-            while (answer % 3 == 0 || String.valueOf(answer).contains("3")) { 
-                answer++;             
+        int result = 0;
+        while (n --> 0) {
+            ++result;
+            while (result % 3 == 0 || Integer.toString(result).contains("3")) {
+                ++result;
             }
         }
-        return answer;
+        return result;
     }
 }
