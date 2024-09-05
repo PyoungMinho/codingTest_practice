@@ -1,34 +1,42 @@
-import java.util.*;
 class Solution {
     public int solution(int[][] board) {
-        ArrayList<int[]> list = new ArrayList<>();
         int answer = 0;
-        int[] dx = {0,1,-1,0,-1,1,1,-1};
-        int[] dy = {1,0,0,-1,-1,1,-1,1};
-        
-        for(int i = 0; i < board.length; i++){
-            for(int j = 0; j < board[0].length; j++){
-                if(board[i][j] == 1){
-                    int[] temp = {i,j};
-                    list.add(temp);
-                } 
+        int length = board.length;   //길이
+        int[][] temp = new int[length+2][length+2];
+        // 길이를 2 늘린 액자용 배열 생성 -> 이러면 단순한 조건식으로 안전영역 구할 수 있음
+
+        // 액자에 board 이식.
+        for(int i=1; i<length+1; i++){
+            for(int j=1; j<length+1;j++){
+                temp[i][j]=board[i-1][j-1];
             }
         }
-        
-        for(int a = 0 ; a < list.size(); a++){
-            int i = list.get(a)[0];
-            int j = list.get(a)[1];
-            for(int k = 0 ; k < 8; k++){
-                        if(dx[k] + i >= 0 && dy[k] + j >= 0 && dx[k] + i <= board.length-1 && dy[k] + j <= board.length-1)
-                            board[dx[k] + i][dy[k] + j] = 1;
+
+
+
+        //위험지대 찾기
+        for(int i=1; i<length+1; i++){
+            for(int j=1; j<length+1;j++){
+                if(temp[i][j]==1){
+                    for(int a = i-1; a<=i+1; a++){
+                        for(int b =j-1; b<=j+1; b++){
+                            if(temp[a][b]!=1) temp[a][b]=2;
+                        }
+                    }
+                }
             }
         }
-        
-        for(int i = 0; i < board.length; i++){
-            for(int j = 0; j < board[0].length; j++){
-                if(board[i][j] == 0) answer+=1;
+
+        // 안전지대 카운트
+        for(int i=1; i<length+1; i++){
+            for(int j=1; j<length+1;j++){
+                if(temp[i][j]==0) answer++;
+                System.out.print(temp[i][j]);
             }
+            System.out.println("");
         }
+
+
         return answer;
     }
 }
