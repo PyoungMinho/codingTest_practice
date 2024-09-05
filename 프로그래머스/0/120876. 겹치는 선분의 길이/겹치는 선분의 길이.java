@@ -1,16 +1,15 @@
+import java.util.*;
 class Solution {
     public int solution(int[][] lines) {
-        int[] rail = new int[200];
+        Map<Integer, Integer> map = new HashMap<>();
         for (int[] line : lines) {
-            for (int j = (line[0] + 100); j < (line[1] + 100); j++) {
-                rail[j]++;
+            int from = Math.min(line[0], line[1]);
+            int to = Math.max(line[0], line[1]);
+            for (int i = from; i < to; i++) {
+                map.merge(i, 1, Integer::sum);
             }
         }
 
-        int answer = 0;
-        for (int value : rail) {
-            if (value > 1) answer++;
-        }
-        return answer;
+        return (int) map.values().stream().filter(i -> i > 1).count();
     }
 }
