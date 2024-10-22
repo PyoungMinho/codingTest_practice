@@ -1,14 +1,25 @@
 class Solution {
     boolean solution(String s) {
-        int cnt = 0;
+        boolean answer = false;
+        int count = 0;
         
-        for(int i=0;i<s.length();i++){
+        for(int i = 0; i<s.length();i++){
+            if(s.charAt(i) == '('){
+                count++;
+            }
             
-            if(s.charAt(i)=='('){ cnt++; } 
-            else { cnt--; }
+            if(s.charAt(i) == ')'){
+                count--;
+            }
             
-            if(cnt<0)  return false;
+            if(count < 0){
+                break;
+            }
         }
-        return cnt>0?false:true;
+        if(count == 0){
+            answer = true;
+        }
+
+        return answer;
     }
 }
