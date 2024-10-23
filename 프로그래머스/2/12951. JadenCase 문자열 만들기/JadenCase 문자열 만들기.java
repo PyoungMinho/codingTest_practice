@@ -1,19 +1,15 @@
 class Solution {
-public String solution(String s) {
-   String answer = "";
-   String str = " " + s;
+  public String solution(String s) {
+        String answer = "";
+        String[] sp = s.toLowerCase().split("");
+      
+        boolean flag = true;
 
-
-    for (int i = 1; i < str.length(); i++){
-        
-        if (str.charAt(i - 1) == ' '){
-          answer += Character.toUpperCase(str.charAt(i)); 
-        } else {
-          answer += Character.toLowerCase(str.charAt(i));
+        for(String ss : sp) {
+            answer += flag ? ss.toUpperCase() : ss;
+            flag = ss.equals(" ") ? true : false;
         }
-        
-    }
 
-    return answer;
+        return answer;
   }
 }
