@@ -2,7 +2,6 @@ class Solution {
   public String solution(String s) {
         String answer = "";
         String[] sp = s.toLowerCase().split("");
-      
         boolean flag = true;
 
         for(String ss : sp) {
