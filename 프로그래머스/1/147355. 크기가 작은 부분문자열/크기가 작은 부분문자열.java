@@ -1,18 +1,14 @@
+import java.util.stream.LongStream;
+
 class Solution {
     public int solution(String t, String p) {
-        int answer = 0;
-        int len = p.length();
-        long pVal = Long.parseLong(p); 
-        
-        for (int i = 0; i <= t.length() - len; i++) { 
-            String sub = t.substring(i, i + len); 
-            long subValue = Long.parseLong(sub); 
-            
-            if (subValue <= pVal) {
-                answer++; 
-            }
-        }
-        
-        return answer;
+        long targetNumber = Long.parseLong(p);
+        int targetNumberLength = p.length();
+
+        return (int) LongStream.range(0L, t.length() - targetNumberLength + 1L)
+                .mapToObj(i -> t.substring((int) i, (int) i + targetNumberLength))
+                .mapToLong(Long::parseLong)
+                .filter(number -> number <= targetNumber)
+                .count();
     }
 }
